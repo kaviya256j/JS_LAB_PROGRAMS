@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration form></form></title>
+</head>
+<body>
+
+    <h2>Registration Form</h2>
+
+<form onsubmit="return validateForm()">
+  Name: <input type="text" id="name"><div id="nameErr" class="error"></div><br><br>
+
+  Email: <input type="text" id="email"><div id="emailErr" class="error"></div><br><br>
+
+  Password: <input type="password" id="pass"><div id="passErr" class="error"></div><br><br>
+
+  Phone: <input type="text" id="phone"><div id="phoneErr" class="error"></div><br><br>
+
+  <button type="submit">Submit</button>
+
+</form>
+
+<script>
+function validateForm() {
+  let name = document.getElementById("name").value.trim();
+
+  let email = document.getElementById("email").value.trim();
+
+  let pass = document.getElementById("pass").value.trim();
+
+  let phone = document.getElementById("phone").value.trim();
+
+  let valid = true;
+
+  
+  if(!/^[A-Za-z ]+$/.test(name)){
+    document.getElementById("nameErr").innerText = "Enter valid name"; valid = false; }
+       else document.getElementById("nameErr").innerText = "";
+
+  
+   if(!/^[^@]+@[^@]+\.[a-z]{2,}$/.test(email)){
+   document.getElementById("emailErr").innerText = "Enter valid email"; valid = false; }
+       else document.getElementById("emailErr").innerText = "";
+
+  
+   if(!/^(?=.*[A-Z])(?=.*\d).{8,}$/.test(pass)){
+     document.getElementById("passErr").innerText = "At least 8 chars, 1 uppercase & 1 number"; valid = false; }
+        else document.getElementById("passErr").innerText = "";
+
+  
+   if(!/^\d{10}$/.test(phone)){
+    document.getElementById("phoneErr").innerText = "10 digit number only"; valid = false; }
+       else document.getElementById("phoneErr").innerText = "";
+
+  return valid;
+} 
+</script>
+</body>
+
+
