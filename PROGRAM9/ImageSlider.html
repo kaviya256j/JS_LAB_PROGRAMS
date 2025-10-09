@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .slider {
+        text-align: center;
+        height: 400px;
+        width: 60%;
+        position: relative;
+        margin: auto;
+      }
+      .slider img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+      button {
+        padding: 10px;
+        border: none;
+        background-color: lightseagreen;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider">
+      <img src="./image1.jpg" alt="" id="displayImg" />
+      <button id="next">Next</button>
+      <button id="prev">previous</button>
+    </div>
+    <script>
+      let Images = ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"];
+      let currentIndex = 0;
+
+      let display = document.getElementById("displayImg");
+      let preBTn = document.getElementById("prev");
+      let nextBTn = document.getElementById("next");
+
+      nextBTn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % Images.length;
+        //0=1 % 5=1
+        display.src = Images[currentIndex];
+      });
+      preBTn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + Images.length) % Images.length;
+        //2=6% 5=1
+        display.src = Images[currentIndex];
+      });
+      //Automatic
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % Images.length;
+        display.src = Images[currentIndex];
+      }, 2000);
+    </script>
+  </body>
+</html>
